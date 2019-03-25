@@ -1,7 +1,7 @@
 {
-  "name": "facade",
+  "name": "order",
   "version": "1.0.0",
-  "description": "The Facade microservice.",
+  "description": "The Order microservice.",
   "main": "index.ts",
   "engines": {
     "node": ">=8"
@@ -20,7 +20,7 @@
     "@loopback/testlab": "^0.4.0"
   },
   "scripts": {
-    "build": "lb-tsc",
+    "build": "lb-tsc && ./bin/generate-example-file-db",
     "build:watch": "lb-tsc --watch",
     "clean": "lb-clean",
     "lint": "npm run prettier:check && npm run tslint",
@@ -33,7 +33,7 @@
     "pretest": "npm run clean && npm run build",
     "test": "lb-mocha \"dist/test/unit/**/*.js\"",
     "posttest": "npm run lint",
-    "start": "npm run build && node dist/index.js",
+    "start": "npm run build && node ./dist/index.js",
     "prepublishOnly": "npm run test"
   },
   "keywords": [

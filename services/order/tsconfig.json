@@ -1,7 +1,8 @@
 {
   "extends": "./node_modules/@loopback/build/config/tsconfig.common.json",
   "compilerOptions": {
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "skipLibCheck": true
   },
   "include": [
     "index.ts",

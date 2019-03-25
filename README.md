@@ -1,4 +1,6 @@
 # loopback4-example-microservices
+taskkill /F /IM node.exe /T
+
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/strongloop/loopback)
 

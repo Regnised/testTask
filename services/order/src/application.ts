@@ -10,8 +10,9 @@ import {
 } from '@loopback/repository';
 /* tslint:disable:no-unused-variable */
 import {BootMixin, Booter, Binding} from '@loopback/boot';
+import {dataSource} from './datasources/memory.datasource';
 
-export class FacadeMicroservice extends BootMixin(
+export class OrderMicroservice extends BootMixin(
   RepositoryMixin(RestApplication),
 ) {
   public _startTime: Date;
@@ -29,10 +30,15 @@ export class FacadeMicroservice extends BootMixin(
 
     super(options);
     this.projectRoot = __dirname;
+    this.setupDataSources();
   }
 
   async start() {
     this._startTime = new Date();
     return super.start();
+  }
+
+  setupDataSources() {
+    this.bind('dataSources.memory').to(dataSource);
   }
 }

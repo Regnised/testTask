@@ -5,5 +5,5 @@ cd ../customer
 npm i
 cd ../transaction
 npm i
-cd ../facade
+cd ../order
 npm i

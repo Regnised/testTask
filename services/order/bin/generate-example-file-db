@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+DIRECTORY="./dist"
+TEST="./dist/test/unit/test.data.json"
+DATA="./dist/src/datasources/data.json"
+
+if [ -d "$DIRECTORY" ]; then
+echo "Generating the example data files inside dist folder for tests and app..."
+cat >$TEST <<EOF
+{
+  "ids": {
+    "Order": 5
+  },
+  "models": {
+    "Order": {
+      "CHK52321122": "{\"id\":\"CHK52321122\",\"orderNumber\":\"1\",\"price\":46000,\"productName\":\"2019 BMW 4 Series\"}",
+      "CHK54520000": "{\"id\":\"CHK54520000\",\"orderNumber\":\"2\",\"price\":23000,\"productName\":\"New 2019 Ford Edge SEL\"}",
+      "CHK52321199": "{\"id\":\"CHK52321199\",\"orderNumber\":\"3\",\"price\":15000,\"productName\":\"New 2018 Ford EcoSport SE\"}",
+      "CHK99999999": "{\"id\":\"CHK99999999\",\"orderNumber\":\"4\",\"price\":17000,\"productName\":\"New 2019 Ford Escape SE\"}"
+    }
+  }
+}
+EOF
+
+cat >$DATA <<EOF
+{
+  "ids": {
+    "Order": 5
+  },
+  "models": {
+    "Order": {
+      "CHK52321122": "{\"id\":\"CHK52321122\",\"orderNumber\":\"1\",\"price\":46000,\"productName\":\"2019 BMW 4 Series\"}",
+      "CHK54520000": "{\"id\":\"CHK54520000\",\"orderNumber\":\"2\",\"price\":23000,\"productName\":\"New 2019 Ford Edge SEL\"}",
+      "CHK52321199": "{\"id\":\"CHK52321199\",\"orderNumber\":\"3\",\"price\":15000,\"productName\":\"New 2018 Ford EcoSport SE\"}",
+      "CHK99999999": "{\"id\":\"CHK99999999\",\"orderNumber\":\"4\",\"price\":17000,\"productName\":\"New 2019 Ford Escape SE\"}"
+    }
+  }
+}
+EOF
+fi
+

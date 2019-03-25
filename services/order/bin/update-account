@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+curl -g -H "Content-Type: application/json" -X POST -d '{"price":2000}' 'http://localhost:3101/orders/update?where={"id":"test1"}' | jq
