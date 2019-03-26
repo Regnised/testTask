@@ -14,6 +14,13 @@ export const orderDefinition = {
     },
     productName: {
       type: 'string',
+    },
+    quantity: {
+      type: 'number'
+    },
+    status: {
+      type: 'string',
+      default: 'Created'
     }
   },
 };

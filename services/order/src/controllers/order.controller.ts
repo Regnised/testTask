@@ -10,7 +10,8 @@ export class OrderController {
   constructor(
     @repository('OrderRepository')
     private orderRepository: OrderRepository,
-  ) {}
+  ) {
+  }
 
   async getOrder(id: string): Promise<Order> {
     return await this.orderRepository.findById(id);
@@ -24,19 +25,23 @@ export class OrderController {
   }
 
   async createOrder(orderInstance: {
+    id: string;
     orderNumber: string;
     price: number;
     productName: string;
-  }): Promise<Order> {
+    quantity: number;
+  }) {
+    orderInstance.id = (Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000).toString();
     return await this.orderRepository.create(orderInstance);
   }
 
-  async updateOrder(where: Where, data: {price: number}) {
-    if (typeof where === 'string') {
-      where = JSON.parse(where) as Where;
-    }
+  async updateOrder(data: {status: string}, where: Where) {
     if (typeof data === 'string') {
       data = JSON.parse(data);
+    }
+
+    if (typeof where === 'string' && data.status === 'Canceled') {
+      where = {'id': where};
     }
 
     return await this.orderRepository.updateAll(data, where);

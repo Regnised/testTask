@@ -13,13 +13,16 @@ const testOrder = {
   id: 'test1',
   orderNumber: '1234',
   price: 1000,
-  productName: 'Toronto'
+  productName: 'Toronto',
+  quantity: 2,
 };
 
 const brokenOrder = {
+  id: 'd76asd87s',
   orderNumber: '123456',
   price: 1000,
   productName: 'Broke City',
+  quantity: 1000,
 };
 
 describe('OrderController Unit Test Suite', () => {
@@ -86,25 +89,25 @@ describe('OrderController Unit Test Suite', () => {
     });
   });
 
-  describe('OrderController.updateOrder({"id":"test1"}", {"price":2000})', () => {
+  describe('OrderController.updateOrder({"id":"test1"}", {"status":"Test"})', () => {
     it('updates an Order instance', async () => {
       const result = await orderCtrl.updateOrder(
-        {id: 'test1'},
         {
-          price: 2000,
+          status: "Canceled",
         },
+        {id: 'test1'},
       );
       expect(result).to.be.equal(1);
     });
   });
 
-  describe('OrderController.updateOrder({"id":"brokenOrderountId1"}", {"balance":2000})', () => {
+  describe('OrderController.updateOrder({"id":"brokenOrderountId1"}", {"status": "Test")', () => {
     it('fails to update Order instance.', async () => {
       let result = await orderCtrl.updateOrder(
-        {id: 'brokenOrderountId1'},
         {
-          price: 2000,
+          status: "Test",
         },
+        {id: 'brokenOrderountId1'}
       );
 
       expect(result).to.be.equal(0);

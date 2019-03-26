@@ -115,12 +115,12 @@ export const def = {
         ],
         requestBody: {
           description:
-            'Order update object containing the balance to update with.',
+            'Order update object containing the Quantity to update with.',
           required: true,
           content: {
             'application/json': {
               schema: {
-                $ref: '#/components/schemas/Balance',
+                $ref: '#/components/schemas/Quantity',
               },
             },
           },
@@ -149,11 +149,11 @@ export const def = {
   components: {
     schemas: {
       Order: orderDefinition,
-      Balance: {
+      Quantity: {
         type: 'object',
-        required: ['balance'],
+        required: ['quantity'],
         properties: {
-          balance: {
+          quantity: {
             type: 'number',
           },
         },
