@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+DIRECTORY="./dist"
+TEST="./dist/test/unit/test.data.json"
+DATA="./dist/src/datasources/data.json"
+
+if [ -d "$DIRECTORY" ]; then
+echo "Generating the example data files inside dist folder for tests and app..."
+cat >$TEST <<EOF
+{
+  "ids": {
+    "Payment": 2
+  },
+  "models": {
+    "Payment": {
+      "000343222": "{\"id\":\"000343223\",\"orderId\":\"CHK52321122\",\"paymentService\":\"PayPal\",\"paymentId\":\"141-XX-X800\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X800\"}}",
+      "000343223": "{\"id\":\"000343999\",\"orderId\":\"CHK54520000\",\"paymentService\":\"Orange\",\"paymentId\":\"141-XX-X888\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X888\"}}"
+    }
+  }
+}
+EOF
+
+cat >$DATA <<EOF
+{
+  "ids": {
+    "Payment": 2
+  },
+  "models": {
+    "Payment": {
+      "000343222": "{\"id\":\"000343223\",\"orderId\":\"CHK52321122\",\"paymentService\":\"PayPal\",\"paymentId\":\"141-XX-X800\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X800\"}}",
+      "000343223": "{\"id\":\"000343999\",\"orderId\":\"CHK54520000\",\"paymentService\":\"Orange\",\"paymentId\":\"141-XX-X888\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X888\"}}"
+    }
+  }
+}
+EOF
+fi
+
