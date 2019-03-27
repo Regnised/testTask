@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-cd services/account
-npm i
-cd ../payment
+cd services/payment
 npm i
 cd ../order
 npm i
