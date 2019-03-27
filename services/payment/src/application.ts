@@ -10,7 +10,7 @@ import {
 } from '@loopback/repository';
 /* tslint:disable:no-unused-variable */
 import {BootMixin, Booter, Binding} from '@loopback/boot';
-import {dataSource} from './datasources';
+import {dataSource} from './datasources/memory.datasource';
 
 export class PaymentMicroservice extends BootMixin(
   RepositoryMixin(RestApplication),

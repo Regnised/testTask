@@ -10,6 +10,35 @@ export const def = {
       'This is the api for the payment service created by loopback.',
   },
   paths: {
+    '/payment/create': {
+      post: {
+        'x-operation-name': 'createPayment',
+        requestBody: {
+          description: 'The payment instance to create.',
+          required: true,
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/Payment',
+              },
+            },
+          },
+        },
+        responses: {
+          '200': {
+            description: 'OK',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/Payment',
+                },
+              },
+            },
+          },
+        },
+        parameters: [],
+      },
+    },
     '/payments': {
       get: {
         'x-operation-name': 'getPayments',

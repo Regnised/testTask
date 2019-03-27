@@ -1,16 +1,19 @@
 import {api} from '@loopback/rest';
 import {def} from './order.controller.api';
-import {OrderRepository} from '../repositories';
+import {OrderRepository, PaymentRepository} from '../repositories';
 import {repository} from '@loopback/repository';
 import {Order} from '../models';
 import {Filter, Where} from '@loopback/repository/src/query';
 
 @api(def)
 export class OrderController {
+  paymentRepository: PaymentRepository;
+
   constructor(
     @repository('OrderRepository')
     private orderRepository: OrderRepository,
   ) {
+    this.paymentRepository = new PaymentRepository();
   }
 
   async getOrder(id: string): Promise<Order> {
@@ -32,19 +35,19 @@ export class OrderController {
     quantity: number;
   }) {
     orderInstance.id = (Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000).toString();
+    await this.paymentRepository.createPayment({
+      id: (Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000).toString(),
+      orderId: orderInstance.id,
+      paymentService: 'PayPal',
+      paymentId: (Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000).toString(),
+    });
     return await this.orderRepository.create(orderInstance);
   }
 
-  async updateOrder(data: {status: string}, where: Where) {
-    if (typeof data === 'string') {
-      data = JSON.parse(data);
-    }
-
-    if (typeof where === 'string' && data.status === 'Canceled') {
-      where = {'id': where};
-    }
-
-    return await this.orderRepository.updateAll(data, where);
+  async updateOrder(data: {status: string, id: string}) {
+    console.log('!!!!!!!!!!! ');
+    console.log(data);
+    return await this.orderRepository.updateAll(data, {id: data.id});
   }
 
   async deleteOrder(where: Where) {

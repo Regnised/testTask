@@ -20,7 +20,7 @@ export const orderDefinition = {
     },
     status: {
       type: 'string',
-      default: 'Created'
+      default: 'created'
     }
   },
 };

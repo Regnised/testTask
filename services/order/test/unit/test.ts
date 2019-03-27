@@ -89,25 +89,22 @@ describe('OrderController Unit Test Suite', () => {
     });
   });
 
-  describe('OrderController.updateOrder({"id":"test1"}", {"status":"Test"})', () => {
+  describe('OrderController.updateOrder({"id":"test1"}", {"status":"canceled"})', () => {
     it('updates an Order instance', async () => {
       const result = await orderCtrl.updateOrder(
         {
-          status: "Canceled",
-        },
-        {id: 'test1'},
+          status: 'cancelled', id: 'CHK52321122'
+        }
       );
       expect(result).to.be.equal(1);
     });
   });
 
-  describe('OrderController.updateOrder({"id":"brokenOrderountId1"}", {"status": "Test")', () => {
+  describe('OrderController.updateOrder({"id":"brokenOrderountId1"}", {"status": "123")', () => {
     it('fails to update Order instance.', async () => {
       let result = await orderCtrl.updateOrder(
         {
-          status: "Test",
-        },
-        {id: 'brokenOrderountId1'}
+          status: 'cancelled', id: 'CHK'}
       );
 
       expect(result).to.be.equal(0);
@@ -195,7 +192,7 @@ async function createOrderController() {
 
   ctx.bind('dataSources.memory').to(dataSource);
 
-  ctx.bind('repositories.OrderRepository').toClass(OrderRepository);
+  ctx.bind('repositories.PaymentRepository').toClass(OrderRepository);
 
   // Bind the controller class
   // @ts-ignore

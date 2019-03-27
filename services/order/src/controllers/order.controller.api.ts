@@ -101,18 +101,7 @@ export const def = {
     '/orders/update': {
       post: {
         'x-operation-name': 'updateOrder',
-        parameters: [
-          {
-            name: 'where',
-            in: 'query',
-            description:
-              'The criteria used to narrow down the number of orders returned.',
-            required: false,
-            schema: {
-              type: 'object',
-            },
-          },
-        ],
+        parameters: [],
         requestBody: {
           description:
             'Order update object containing the Quantity to update with.',
@@ -120,7 +109,7 @@ export const def = {
           content: {
             'application/json': {
               schema: {
-                $ref: '#/components/schemas/Quantity',
+                $ref: '#/components/schemas/Order',
               },
             },
           },
@@ -148,16 +137,7 @@ export const def = {
   },
   components: {
     schemas: {
-      Order: orderDefinition,
-      Quantity: {
-        type: 'object',
-        required: ['quantity'],
-        properties: {
-          quantity: {
-            type: 'number',
-          },
-        },
-      },
+      Order: orderDefinition
     },
   },
 };

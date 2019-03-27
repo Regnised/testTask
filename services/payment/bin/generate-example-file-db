@@ -12,8 +12,8 @@ cat >$TEST <<EOF
   },
   "models": {
     "Payment": {
-      "000343222": "{\"id\":\"000343223\",\"orderId\":\"CHK52321122\",\"paymentService\":\"PayPal\",\"paymentId\":\"141-XX-X800\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X800\"}}",
-      "000343223": "{\"id\":\"000343999\",\"orderId\":\"CHK54520000\",\"paymentService\":\"Orange\",\"paymentId\":\"141-XX-X888\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X888\"}}"
+      "000343222": "{\"id\":\"000343223\",\"orderId\":\"CHK52321122\",\"paymentService\":\"PayPal\",\"paymentId\":\"141-XX-X800\",\"webhookResult\":{\"status\":\"confirmed\",\"paymentId\":\"141-XX-X800\"}}",
+      "000343223": "{\"id\":\"000343999\",\"orderId\":\"CHK54520000\",\"paymentService\":\"Orange\",\"paymentId\":\"141-XX-X888\",\"webhookResult\":{\"status\":\"confirmed\",\"paymentId\":\"141-XX-X888\"}}"
     }
   }
 }
@@ -26,8 +26,8 @@ cat >$DATA <<EOF
   },
   "models": {
     "Payment": {
-      "000343222": "{\"id\":\"000343223\",\"orderId\":\"CHK52321122\",\"paymentService\":\"PayPal\",\"paymentId\":\"141-XX-X800\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X800\"}}",
-      "000343223": "{\"id\":\"000343999\",\"orderId\":\"CHK54520000\",\"paymentService\":\"Orange\",\"paymentId\":\"141-XX-X888\",\"webhookResult\":{\"status\":\"Success\",\"paymentId\":\"141-XX-X888\"}}"
+      "000343222": "{\"id\":\"000343223\",\"orderId\":\"CHK52321122\",\"paymentService\":\"PayPal\",\"paymentId\":\"141-XX-X800\",\"webhookResult\":{\"status\":\"confirmed\",\"paymentId\":\"141-XX-X800\"}}",
+      "000343223": "{\"id\":\"000343999\",\"orderId\":\"CHK54520000\",\"paymentService\":\"Orange\",\"paymentId\":\"141-XX-X888\",\"webhookResult\":{\"status\":\"confirmed\",\"paymentId\":\"141-XX-X888\"}}"
     }
   }
 }

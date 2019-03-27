@@ -10,7 +10,7 @@
         "paymentService": "PayPal",
         "paymentId": "141-XX-X800",
         "webhookResult": {
-          "status": "Success",
+          "status": "confirmed",
           "paymentId": "141-XX-X800"
         }
       },
@@ -20,7 +20,7 @@
         "paymentService": "Orange",
         "paymentId": "141-XX-X888",
         "webhookResult": {
-          "status": "Success",
+          "status": "declined",
           "paymentId": "141-XX-X888"
         }
       }
