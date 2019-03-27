@@ -55,7 +55,9 @@ export class PaymentController {
     function timeout() {
       setTimeout(async () => {
         //After 20 seconds we save delivered status to order
-        me.orderRepository.updateOrder({status: 'delivered', id: orderId});
+        if (status !== 'cancelled') {
+          me.orderRepository.updateOrder({status: 'delivered', id: orderId});
+        }
       }, 20000);
     }
 

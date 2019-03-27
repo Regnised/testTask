@@ -49,7 +49,7 @@ export class OrderController {
   }
 
   async cancelOrder(data: {id: string}) {
-    return await this.orderRepository.updateAll({status: 'cancelled'}, {id: data.id});
+    return await this.orderRepository.updateAll({status: 'cancelled'}, {id: data.id, status: {nlike: 'delivered'}});
   }
 
 }
