@@ -22,13 +22,13 @@ npm start
 - GET http://127.0.0.1:3101/orders
 Find all orders
 
-- GET http://127.0.0.1:3101/orders/CHK52321122 Find order with ID CHK52321122
+- GET http://127.0.0.1:3101/orders/{orderID} Find order by Id
 
 - POST http://127.0.0.1:3101/orders/create 
 > Create new order. Example: {"orderNumber": "111", "price": 10000, "productName": "Lexus","quantity": 1}
 
-- POST http://127.0.0.1:3101/orders/update?where=CHK52321122
-> User can change order status {"status": "Canceled"}
+- POST http://127.0.0.1:3101/order/cancel Add id field to POST body parameter
+> User can change order status to cancel
 
 #! Code memory storage includes test data. Track only created by http://127.0.0.1:3101/orders/create documents !
 
