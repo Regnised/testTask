@@ -134,6 +134,42 @@ export const def = {
         },
       },
     },
+    '/order/cancel': {
+      post: {
+        'x-operation-name': 'cancelOrder',
+        parameters: [],
+        requestBody: {
+          description:
+            'Order update object containing the Quantity to update with.',
+          required: true,
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/Order',
+              },
+            },
+          },
+        },
+        responses: {
+          '200': {
+            description: 'update information',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    count: {
+                      type: 'number',
+                      description: 'number of records updated',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   components: {
     schemas: {
