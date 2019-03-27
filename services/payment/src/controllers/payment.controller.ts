@@ -36,26 +36,29 @@ export class PaymentController {
   }): Promise<Payment> {
     let me = this;
     let response = await this.paymentRepository.create(paymentInstance);
+    //Save payment result to payment data storage and change order status
+    response.webhookResult = {
+      status: Math.floor(Math.random() * 2) === 1 ? 'confirmed' : 'declined',
+      paymentId: response.paymentId,
+    };
+    let newResponse = await me.paymentRepository.save(response);
+
+    //If we get webhook payment result we can find in payment data storage the same
+    //paymentId and find orderID into document. After update order status by this
+    //orderID and webhookResult.status
+
+    //Save payment webhook result to order document
+    let status = (newResponse && newResponse.webhookResult.status === 'confirmed') ? 'confirmed' : 'cancelled';
+    let orderId = newResponse && newResponse.orderId;
+    me.orderRepository.updateOrder({status: status, id: orderId});
+
     function timeout() {
       setTimeout(async () => {
-        //After 20 seconds we generate webhook payment result
-        //Save payment result to payment data storage and change order status
-        response.webhookResult = {
-          status: Math.floor(Math.random() * 2) === 1 ? "confirmed" : "declined",
-          paymentId: response.paymentId
-        };
-        let newResponse = await me.paymentRepository.save(response);
-
-        //If we get webhook payment result we can find in payment data storage the same
-        //paymentId and find orderID into document. After update order status by this
-        //orderID and webhookResult.status
-
-        //Save payment webhook result to order document
-        let status = (newResponse && newResponse.webhookResult.status === "confirmed") ? "confirmed" : "cancelled";
-        let orderId = newResponse && newResponse.orderId;
-        await me.orderRepository.updateOrder({status: status, id: orderId})
-      }, Math.floor(Math.random() * 4) * 10000);
+        //After 20 seconds we save delivered status to order
+        me.orderRepository.updateOrder({status: 'delivered', id: orderId});
+      }, 20000);
     }
+
     timeout();
 
     return response;

@@ -45,15 +45,7 @@ export class OrderController {
   }
 
   async updateOrder(data: {status: string, id: string}) {
-    console.log('!!!!!!!!!!! ');
-    console.log(data);
-    return await this.orderRepository.updateAll(data, {id: data.id});
+    return await this.orderRepository.updateAll({status: data.status}, {id: data.id});
   }
 
-  async deleteOrder(where: Where) {
-    if (typeof where === 'string') {
-      where = JSON.parse(where) as Where;
-    }
-    return await this.orderRepository.deleteAll(where);
-  }
 }

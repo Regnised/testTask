@@ -90,8 +90,8 @@ describe('PaymentController Unit Test Suite', () => {
       const id = '000343223';
       const result = await paymentCtrl.getPayment(id);
       expect(result).to.not.be.empty();
-      expect(result.orderId).to.be.equal('CHK52321122');
-      expect(result.paymentService).to.be.equal('PayPal');
+      expect(result.orderId).to.be.equal('CHK54520000');
+      expect(result.paymentService).to.be.equal('Orange');
     });
   });
 });
